@@ -1,4 +1,11 @@
 --Creating tables for PH-EmployeesDB
+DROP TABLE titles;
+DROP TABLE dept_emp;
+DROP TABLE salaries;
+DROP TABLE dept_manager;
+DROP TABLE employees;
+DROP TABLE departments;
+
 CREATE TABLE departments (
 	dept_no VARCHAR(4) NOT NULL,
 	dept_name VARCHAR(40) NOT NULL,
@@ -54,4 +61,15 @@ FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
 	PRIMARY KEY (emp_no)
 );
 
+COPY departments FROM '/tmp/departments.csv' DELIMITER ',' CSV HEADER;
 SELECT * FROM departments;
+COPY employees FROM '/tmp/employees.csv' DELIMITER ',' CSV HEADER;
+COPY dept_manager FROM '/tmp/dept_manager.csv' DELIMITER ',' CSV HEADER;
+SELECT * FROM dept_manager;
+
+COPY salaries FROM '/tmp/salaries.csv' DELIMITER ',' CSV HEADER;
+SELECT * FROM salaries;
+
+COPY dept_emp FROM '/tmp/dept_emp.csv' DELIMITER ',' CSV HEADER;
+SELECT * FROM dept_emp;
+SELECT * FROM employees;
